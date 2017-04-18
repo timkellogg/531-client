@@ -19,15 +19,15 @@ module.exports = {
     autoOpenBrowser: false,
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    // proxyTable: {
-    //   '*': {
-    //     target: 'http://localhost:3000/',
-    //     changeOrigin: true,
-    //     pathRewrite: {
-    //       "^/api": ""
-    //     }
-    //   },
-    // },
+    proxyTable: {
+      '/api': {
+        target: 'http://localhost:3000/',
+        changeOrigin: true,
+        pathRewrite: {
+          "^/api": ""
+        }
+      },
+    },
     cssSourceMap: false
   }
 }
