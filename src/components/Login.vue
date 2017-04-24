@@ -4,18 +4,8 @@
 
     <div class="form">
       <div class="form__group">
-        <label for="username">Username:</label>
-        <input v-model="username" v-bind:class="{ error: usernameError }">
-      </div>
-
-      <div class="form__group">
         <label for="email">Email:</label>
         <input v-model="email" type="email" v-bind:class="{ error: emailError }">
-      </div>
-
-      <div class="form__group">
-        <label for="weight">Weight:</label>
-        <input v-model="weight" type="number" v-bind:class="{ error: weightError }">
       </div>
 
       <div class="form__group">
@@ -23,13 +13,8 @@
         <input v-model="password" type="password" v-bind:class="{ error: passwordError }">
       </div>
 
-      <div class="form__group">
-        <label for="confirmation">Confirmation</label>
-        <input v-model="confirmation" type="password" v-bind:class="{ error: confirmationError }">
-      </div>
-
       <div class="form__group-button">
-        <button @click="register" class="form__button">Submit</button>
+        <button @click="login" class="form__button">Login</button>
       </div>
     </div>
   </div>
@@ -37,34 +22,26 @@
 
 <script>
 export default {
-  name: 'register',
+  name: 'login',
   data () {
     return {
-      username: '',
-      usernameError: false,
       email: '',
       emailError: false,
       password: '',
       passwordError: false,
-      confirmation: '',
-      confirmationError: false,
-      weight: null,
-      weightError: false
     }
   },
   methods: {
-    register () {
+    login () {
       const valid = this.validate()
 
-      const user = {
-        username: this.username,
+      const payload = {
         email: this.email,
         password: this.password,
-        weight: this.weight
       }
 
       if (valid) {
-        this.$store.dispatch('register', user)
+        this.$store.dispatch('login', payload)
             .then(() => {
               this.$router.push({ path: '/' })
             })
@@ -72,7 +49,7 @@ export default {
       }
     },
     validate () {
-      const errors = ['username', 'email', 'password', 'confirmation', 'weight'].map(field => {
+      const errors = ['email', 'password'].map(field => {
         const model = this[field]
 
         if (model === null || model === '') {

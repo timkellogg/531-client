@@ -1,7 +1,8 @@
 import * as types from './types'
 
 export default {
-  [types.REGISTER] (state) {
-
+  [types.AUTHENTICATE] (state, userId) {
+    state.authenticated = true
+    state.userId = userId
   }
 }

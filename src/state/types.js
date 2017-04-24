@@ -1,1 +1,1 @@
-export const REGISTER = 'REGISTER'
+export const AUTHENTICATE = 'AUTHENTICATE'
