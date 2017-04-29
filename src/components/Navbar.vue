@@ -8,7 +8,6 @@
 
 export default {
   name: 'navbar',
-  data () {},
   methods: {
     logout() {
       this.$store.dispatch('logout')

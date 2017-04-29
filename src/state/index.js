@@ -8,7 +8,12 @@ Vue.use(Vuex)
 
 const state = {
   authenticated: false,
-  userId: null
+  user: {
+    id: null,
+    username: null,
+    email: null,
+    weight: null
+  }
 }
 
 export default new Vuex.Store({
